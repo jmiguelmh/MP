@@ -1,9 +1,9 @@
 1000 600
-1
+10
 GREEN
 SKYBLUE
 PINK
 60
-1
-2
+5
+3
 
