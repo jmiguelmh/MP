@@ -274,6 +274,7 @@ void Game::Update()
 
             DrawText("ESC para salir", 10, 10, 20, BLACK);
             DrawFPS(10, 30);
+            
             score = "Particulas: " + to_string(ovnis.getUtiles());
             tiempo = "tiempo: " + to_string((int)GetTime());
             string vidasString = "vidas: " + to_string(vidas);
