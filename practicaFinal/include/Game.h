@@ -29,6 +29,9 @@ private:
     int framesInvencibilidad;
     int cooldownDisparoEspecial; // frames cooldown se calcula en el init para ser 5 segundos
     int framesCooldown;
+    int rondaActual;
+    int numeroRondas;
+    int puntuacion;
 
     void pantallaVictoria(int N, string t);
     void pantallaDerrota(int N, string t);
