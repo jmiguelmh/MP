@@ -1,5 +1,6 @@
 #include "ConjuntoParticulas.h"
 #include <iostream>
+#include <cassert>
 
 using namespace std;
 
@@ -87,6 +88,7 @@ ConjuntoParticulas::ConjuntoParticulas()
 
 ConjuntoParticulas::ConjuntoParticulas(int c)
 {
+    assert(c >= 0);
     set = 0;
     reservarMemoria(c);
     capacidad = c;
