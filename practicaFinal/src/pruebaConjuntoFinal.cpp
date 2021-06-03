@@ -56,7 +56,6 @@ void test3(string s) {
     cout << s << endl;
     cout << "Sobrecarga de operador =  " << endl;
 
-
     ConjuntoParticulas cp1(2);
     ConjuntoParticulas cp2(3);
 

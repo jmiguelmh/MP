@@ -45,6 +45,7 @@ void ConjuntoParticulas::copiar(const ConjuntoParticulas &c) {
 }
 
 ConjuntoParticulas & ConjuntoParticulas::operator=(const ConjuntoParticulas& original){
+    liberarMemoria();
     copiar(original);
 
     return *this;
