@@ -276,6 +276,23 @@ int main(int argc, char *argv[]) {
             test7("\n************* Test 7 ************* ");
             break;
         }
+
+        case 8:
+        {
+            cout << "Prueba del operador >> de Particula" << endl;
+            Particula p;
+            cin >> p;
+            cout << p << endl;
+            break;
+        }
+
+        case 9:
+        {
+            cout << "Prueba del constructor con parametro fichero de Conjunto Particulas" << endl;
+            ConjuntoParticulas c("ConjuntoParticulas.txt");
+            cout << c << endl; 
+            break;
+        }
     }
     
     separador();
@@ -297,5 +314,6 @@ int main(int argc, char *argv[]) {
     test7("\n************* Test 7 ************* ");
     separador();
      */
+
     return 0;
 }

@@ -21,6 +21,7 @@ public:
     ConjuntoParticulas();
     ConjuntoParticulas(int c);
     ConjuntoParticulas(const ConjuntoParticulas &c);
+    ConjuntoParticulas(const char* nombre);
     ~ConjuntoParticulas();
     int getCapacidad() const;
     int getUtiles() const;

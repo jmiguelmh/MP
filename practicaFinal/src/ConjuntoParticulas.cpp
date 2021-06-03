@@ -1,6 +1,7 @@
 #include "ConjuntoParticulas.h"
 #include <iostream>
 #include <cassert>
+#include <fstream>
 
 using namespace std;
 
@@ -103,6 +104,27 @@ ConjuntoParticulas::ConjuntoParticulas(int c)
 
 ConjuntoParticulas::ConjuntoParticulas(const ConjuntoParticulas &c) {
     copiar(c);
+}
+
+ConjuntoParticulas::ConjuntoParticulas(const char* nombre) {
+    utiles = 0;
+    capacidad = 0;
+    set = 0;
+    ifstream fichero;
+    fichero.open(nombre);
+    assert(fichero.is_open());
+    int numeroParticulas;
+    fichero >> numeroParticulas;
+    //cout << "NumeroParticulas: " << numeroParticulas << endl;
+    Particula aux;
+
+    for(int i = 0; i < numeroParticulas; i++) {
+        fichero >> aux;
+        //cout << "Particula " << i << ": " << aux << endl;
+        AgregaParticula(aux);
+    }
+
+    fichero.close();
 }
 
 ConjuntoParticulas::~ConjuntoParticulas()

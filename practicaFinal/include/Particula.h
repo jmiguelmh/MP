@@ -72,6 +72,7 @@ public:
 };
 
 ostream& operator<<(ostream &flujo, const Particula &p);
+istream& operator>>(istream &flujo, Particula &p);
 
 
 #endif

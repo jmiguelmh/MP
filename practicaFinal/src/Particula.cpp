@@ -137,6 +137,20 @@ ostream& operator<<(ostream &flujo, const Particula &p) {
     return flujo;
 }
 
+istream& operator>>(istream &flujo, Particula &p) {
+    float x, y, dx, dy, radio;
+    flujo >> x;
+    flujo >> y;
+    flujo >> dx;
+    flujo >> dy;
+    flujo >> radio;
+
+    Particula aux(x,y,dx,dy,radio);
+    p = aux;
+    
+    return flujo;
+}
+
 bool Particula::operator==(const Particula &p) const {
     bool iguales = false;
 
