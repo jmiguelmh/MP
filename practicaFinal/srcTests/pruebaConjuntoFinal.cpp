@@ -5,11 +5,11 @@
 
 using namespace std;
 
-void test0(string s) {
+void testP1(string s) {
     cout << s << endl;
     cout << "Prueba Particulas" << endl;
     cout << "Paso 1 " << endl;
-    Particula a, b;
+    Particula a(8,8,-1,-1,3), b(3,3,1,1,5);
     cout << "Particula 1: " << a << endl;
     cout << "Particula 2: " << b << endl;
     
@@ -31,14 +31,25 @@ void test0(string s) {
     }
     
     cout << s << endl;
-    
-
 }
+/*
+void testP(string s) {
+    cout << s << endl;
+    cout << "Lectura de datos para particula desde cin " << endl;
+    Particula p;
+    cin >> p;
+    
+    cout << "\nDatos leidos: ";
+    cout << p << endl;
+    
+}
+
+*/
 void test1(string s) {
     cout << s << endl;
     cout << "Prueba constructores y destructor" << endl;
     ConjuntoParticulas cp1; // por defecto
-    ConjuntoParticulas cp2(3); // con parametros
+    ConjuntoParticulas cp2(3); // con parametros 
     ConjuntoParticulas otro(cp2); // ctor copia
 }
 
@@ -47,7 +58,14 @@ void test2(string s) {
     cout << "Sobrecarga de operador <<  " << endl;
 
     cout << "Crear y mostrar conjunto de 5 particulas " << endl;
-    ConjuntoParticulas cp1(5);
+    ConjuntoParticulas cp1;
+    float x = 1.0;
+    float y = 1.0;
+    for(int i = 0; i < 5; i++){
+        Particula p(x,y, -x, -y,1);
+        cp1.AgregaParticula(p);
+        x++; y++;
+    }
     cout << cp1 << endl;
 
 }
@@ -56,9 +74,18 @@ void test3(string s) {
     cout << s << endl;
     cout << "Sobrecarga de operador =  " << endl;
 
-    ConjuntoParticulas cp1(2);
-    ConjuntoParticulas cp2(3);
 
+    ConjuntoParticulas cp1;
+    ConjuntoParticulas cp2;
+    
+    cp1.AgregaParticula(Particula(1,1,0,0,3));
+    cp1.AgregaParticula(Particula(-1,-1,0,0,3));
+
+    cp2.AgregaParticula(Particula(2,2,0,0,6));
+    cp2.AgregaParticula(Particula(-2,-2,0,0,6));
+    cp2.AgregaParticula(Particula(3,3,0,0,6));
+
+    
     cout << "Dos conjuntos iniciales: " << endl;
     cout << "C1: " << cp1 << endl;
     cout << "C2: " << cp2 << endl;
@@ -75,8 +102,17 @@ void test3(string s) {
 void test4(string s) {
     cout << s << endl;
     cout << "Concatenacion conjuntos + " << endl;
-    ConjuntoParticulas cp1(2);
-    ConjuntoParticulas cp2(2);
+    ConjuntoParticulas cp1;
+    ConjuntoParticulas cp2;
+    
+    
+    cp1.AgregaParticula(Particula(1,1,0,0,3));
+    cp1.AgregaParticula(Particula(-1,-1,0,0,3));
+
+    cp2.AgregaParticula(Particula(2,2,0,0,6));
+    cp2.AgregaParticula(Particula(-2,-2,0,0,6));
+        
+    
     ConjuntoParticulas cp3 = cp1 + cp2;
 
     cout << "C1:  ";
@@ -97,6 +133,7 @@ void test4(string s) {
 
     cout << "C1 + C2 en cout: ";
     cout << cp1 + cp2;
+
 
 }
 
@@ -163,7 +200,7 @@ void test7(string s) {
     cout << s << endl;
     cout << "Ordenar array de ConjuntoParticulas < " << endl;
 
-    int N = 20;
+    int N = 10;
 
     ConjuntoParticulas *cp = new ConjuntoParticulas[N];
 
@@ -209,6 +246,12 @@ void test7(string s) {
 
 }
 
+void testFile(string s, const char* fname){
+    cout << s << endl;
+    ConjuntoParticulas cp(fname);
+    cout << cp << endl;
+}
+
 void separador() {
     cout << "***********************************" << endl;
 
@@ -220,20 +263,17 @@ void separador() {
 int main(int argc, char *argv[]) {
 
     if (argc < 2) {
-        cerr << "Uso: pruebaFinal <nroTest> donde nroTest es un valor entre 0 y 7" << endl;
+        cerr << "Uso: pruebaFinal <nroTest> donde nroTest es un valor entre 1 y 9" << endl;
+        cerr << "si nroTest=8 hace falta un segundo parámetro con el nombre del fichero de datos" << endl;
         exit(-1);
     }
-
+    
+    
     int test = atoi(argv[1]);
+    
 
     switch (test) {
-        
-        case 0:
-        {
-            test0("\n************* Test 0 ************* ");
-            break;
-        }
-        
+       
         case 1:
         {
             test1("\n************* Test 1 ************* ");
@@ -275,44 +315,22 @@ int main(int argc, char *argv[]) {
             test7("\n************* Test 7 ************* ");
             break;
         }
-
-        case 8:
-        {
-            cout << "Prueba del operador >> de Particula" << endl;
-            Particula p;
-            cin >> p;
-            cout << p << endl;
+       case 8:
+        {   testFile("\n************* Test Constructor Fichero ************* ", argv[2]);
             break;
         }
-
+        
         case 9:
         {
-            cout << "Prueba del constructor con parametro fichero de Conjunto Particulas" << endl;
-            ConjuntoParticulas c("ConjuntoParticulas.txt");
-            cout << c << endl; 
+            testP1("\n************* Test particula ************* ");
             break;
         }
+       
+        
+        
     }
     
     separador();
-
-    /*
-        
-    test1("\n************* Test 2 ************* ");
-    separador();
-    test2("\n************* Test 2 ************* ");
-    separador();
-    test3("\n************* Test 3 ************* ");
-    separador();
-    test4("\n************* Test 4 ************* ");
-    separador();
-    test5("\n************* Test 5 ************* ");
-    separador();
-    test6("\n************* Test 6 ************* ");
-    separador();
-    test7("\n************* Test 7 ************* ");
-    separador();
-     */
 
     return 0;
 }

@@ -2,7 +2,7 @@
 
 int main(int argc, char **argv)
 {
-    Game juego("datos.txt");
+    Game juego("datosJuego.txt");
     juego.Init();
     juego.Update();
 }
